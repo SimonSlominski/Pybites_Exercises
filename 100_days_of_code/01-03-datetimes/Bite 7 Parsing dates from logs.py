@@ -38,6 +38,7 @@ with open(logfile) as f:
 # print(loglines)
 # for you to code:
 
+
 def convert_to_datetime(line):
     """TODO 1:
        Extract timestamp from logline and convert it to a datetime object.
@@ -46,15 +47,12 @@ def convert_to_datetime(line):
        returns:
        datetime(2014, 7, 3, 23, 27, 51)
     """
-
+    """ 
+        Match_object.group(0) says that the whole part of match_object is chosen.
+        Group(0) locates the whole match expression. 
+    """
     timestamps = re.search('(\d{4})-(\d{2})-(\d{2})T(\d{2})\:(\d{2})\:(\d{2})', line).group(0)
-    """
-    Match_object.group(0) says that the whole part of match_object is chosen.
-    Group(0) locates the whole match expression.
-    """
     return datetime.strptime(timestamps, '%Y-%m-%dT%H:%M:%S')
-
-
 
 
 def time_between_shutdowns(loglines):
@@ -68,7 +66,4 @@ def time_between_shutdowns(loglines):
     last_shoutdown_event = shoutdown_events[-1]
     return convert_to_datetime(last_shoutdown_event) - convert_to_datetime(first_shutdown_event)
 
-
-
 print(time_between_shutdowns(loglines))
-
