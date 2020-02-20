@@ -23,4 +23,4 @@ def split_in_columns(message=message):
        (pipe), return the obtained output string"""
     return "|".join(message.split('\n'))
 
-print(split_in_columns(message))
+
