@@ -31,9 +31,19 @@ def get_euro_nums_most_common(grater_then):
     # grater_then is the number of occurrence
     return euro_nums_occurrence[euro_nums_occurrence['x times'] > grater_then]
 
+def check_even_odd_ratio(main_numbers):
+    event_count = [num
+                 for num in main_numbers
+                 if num % 2 == 0]
+    odd_count = [num
+                 for num in main_numbers
+                 if num % 2 != 0]
+    return f"Even: {event_count}, Odd: {odd_count}"
+
 
 if __name__ == "__main__":
-    print(get_eurojackpot_numbers(7))
+    eurojackpot = get_eurojackpot_numbers(7)
+    print(eurojackpot)
 
     print(f"Most common euro numbers are:")
     print(get_euro_nums_most_common(12))
