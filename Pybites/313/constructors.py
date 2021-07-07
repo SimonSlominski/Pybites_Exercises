@@ -41,13 +41,34 @@ class Domain:
             raise DomainException
         return name
 
-    @classmethod
-    def parse_url(cls, name):
-        return cls(urlparse(name).netloc)
+    # -----> Second approach to validate Class Attributes <-----
+    # def __init__(self, name):
+    #     # self.name = name
+    #
+    # @property
+    # def name(self):
+    #     return self.__name
+    #
+    # @name.setter
+    # def name(self, value):
+    #     if re.match(r".*\.[a-z]{2,3}$", value):
+    #         self.__name = value
+    #     else:
+    #         raise DomainException
+
+    # -----> Third approach to validate Class Attributes <-----
+    # def __init__(self, name):
+    #     if not re.match(r'.*\.[a-z]{2,3}$', name.lower()):
+    #         raise DomainException(f"{name} is an invalid domain")
+    #     self.name = name
 
     @classmethod
-    def parse_email(cls, name):
-        return cls(name[name.index("@")+1 : ])
+    def parse_url(cls, url):
+        return cls(urlparse(url).netloc)
+
+    @classmethod
+    def parse_email(cls, email):
+        return cls(email.split('@')[1])
 
     def __str__(self):
-        return f"{self.name}"
+        return self.name
