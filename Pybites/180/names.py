@@ -34,3 +34,9 @@ def group_names_by_country(data: str = data) -> defaultdict:
         countries[country_code].append(name)
 
     return countries
+
+
+if __name__ == '__main__':
+    test = group_names_by_country(data)
+    print(test)
+
